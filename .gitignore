@@ -4,3 +4,4 @@ data/*
 !data/wine.csv
 data/forest_cover.csv
 data/processed/forest_cover.csv
+data/processed/forest_cover_processed.csv
