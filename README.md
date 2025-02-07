@@ -1,36 +1,53 @@
-# Generative VAE Latent Analysis 
+#  Análise de Agrupamento com Growing Neural Gas (GNG)
 
-Este projeto explora a formação do espaço latente usando **Variational Autoencoders (VAE)** em dois conjuntos de dados com volumes diferentes, permitindo uma análise comparativa.
+Este projeto investiga **modelos neurais não supervisionados** aplicados ao **Wine Dataset**, utilizando a técnica **Growing Neural Gas (GNG)** para mapear padrões.
 
-##  Datasets Utilizados
-1️⃣ **UCI Covertype (Forest Cover Type)**  
-   -  ~581.000 amostras |  54 features  
-   -  Classificação de tipos de cobertura do solo.  
-   -  Arquivo: `data/forest_cover.csv`  
+---
 
-2️⃣ **Wine Dataset**  
-   -  178 amostras | 🔹13 features  
-   -  Classificação de tipos de vinho com base em propriedades químicas.  
-   -  Arquivo: `data/wine.csv`  
+##  **Dataset Utilizado**
+ **Wine Dataset**  
+   - 178 amostras | 🔹13 features  
+   - Classificação de tipos de vinho baseada em propriedades químicas.  
+   - Arquivo: `data/wine.csv`  
 
-## Objetivos do Projeto
-- Treinar **Variational Autoencoders (VAE)** para gerar representações latentes dos datasets.
-- Projetar o **espaço latente em 2D** usando **PCA** e analisar a separação das classes.
-- Comparar a **formação do espaço latente** entre um dataset pequeno e um grande.
+---
 
-## Estrutura do Projeto
- `src/download_dataset.py` → Script para baixar o UCI Covertype.  
- `src/download_wine.py` → Script para baixar o Wine Dataset.  
- `src/exploracao.py` → Análise exploratória dos dados.  
- `src/preprocess.py` → Pré-processamento dos dados (normalização).  
- `src/train_vae.py` → Implementação e treinamento do modelo VAE.  
- `data/` → Diretório com os datasets.  
- `data/processed/` → Diretório com os datasets normalizados.  
- `models/` → Diretório para salvar modelos treinados.  
+## 🎯 **Objetivos do Projeto**
+✅ **Treinar um modelo GNG** para detectar padrões e agrupamentos no Wine Dataset.  
+✅ **Avaliar a formação dos clusters** e identificar possíveis **outliers**.  
+✅ **Explorar variações nos parâmetros** (`learning_rate`, `max_age`, `número de neurônios`, seleção de features).  
+✅ **Comparar a segmentação ao utilizar todas as variáveis vs. um subconjunto otimizado.**  
 
-##  Como Rodar o Projeto?
-1️⃣ **Criar ambiente virtual e instalar dependências**  
-```powershell
-python -m venv venv
-venv\Scripts\Activate
-pip install -r requirements.txt
+---
+
+## **Metodologia**
+1️⃣ **Exploração inicial dos dados** (distribuição das features, matriz de correlação).  
+2️⃣ **Normalização dos dados** para garantir comparabilidade.  
+3️⃣ **Treinamento do GNG** utilizando diferentes configurações.  
+4️⃣ **Análise dos gráficos gerados** para interpretar a segmentação dos clusters.  
+
+---
+
+## 📊 **Resultados e Análises**
+
+### **📌 Utilização das 5 dimensões mais correlacionadas para melhorar a segmentação**
+📌 **Correlação entre os dados do Wine Dataset:**  
+![Correlação entre os dados](image-1.png)
+
+### 🔹 **Clusters e Outliers**
+- O modelo **GNG detectou padrões latentes**, mostrando como os dados se organizam naturalmente.  
+- Os clusters apresentaram **uma organização linear**, indicando forte correlação entre algumas variáveis.  
+- Algumas conexões mais longas indicam regiões menos povoadas do espaço latente.
+
+### 🔹 **Homogeneidade dos Agrupamentos**
+- Os neurônios do GNG se ajustaram a **regiões de maior densidade**, formando agrupamentos coerentes.  
+- **Reduzir as features** para as 5 mais correlacionadas melhorou a segmentação e destacou um padrão linear.
+
+### 🔹 **Variação de Parâmetros**
+- **Ajustes de `max_age` quebraram conexões entre grupos, aumentando a separação.**  
+- **Ajustar `learning_rate` permitiu que os neurônios se acomodassem mais rápido aos padrões dos dados.**  
+- **Escolher apenas as 5 variáveis mais conectadas melhorou a clareza dos clusters.**  
+
+### 🔹 **Gráfico gerado no Wine Dataset com as 5 variáveis mais correlacionadas**
+📌 **Clusters identificados pelo GNG:**  
+![Clusters formados pelo GNG](image.png)  
