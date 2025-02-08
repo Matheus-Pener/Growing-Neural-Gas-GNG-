@@ -1,6 +1,6 @@
 # Análise de Agrupamento com Growing Neural Gas (GNG)
 
-Este projeto investiga **modelos neurais não supervisionados** aplicados ao **Wine Dataset** e ao **Forest Cover Dataset**, utilizando a técnica **Growing Neural Gas (GNG)** para mapear padrões de agrupamento e analisar a segmentação latente dos dados.
+Este projeto investiga **modelos neurais não supervisionados** aplicados ao **Wine Dataset** e ao **Forest Cover Dataset**, utilizando a técnica **Growing Neural Gas (GNG)** para mapear padrões de agrupamento e analisar a segmentação dos dados.
 
 ---
 
@@ -20,7 +20,7 @@ Este projeto investiga **modelos neurais não supervisionados** aplicados ao **W
 
 ---
 
-## 🎯 Objetivos do Projeto
+## Objetivos do Projeto
 
 - **Treinar um modelo GNG** para detectar padrões e agrupamentos nos datasets.  
 - **Avaliar a formação dos clusters** e identificar possíveis **outliers**.  
@@ -30,7 +30,7 @@ Este projeto investiga **modelos neurais não supervisionados** aplicados ao **W
 
 ---
 
-## 🛠 Metodologia
+## Metodologia
 
 1. **Exploração inicial dos dados** (distribuição das features, matriz de correlação).  
 2. **Normalização dos dados** para garantir comparabilidade.  
@@ -40,47 +40,47 @@ Este projeto investiga **modelos neurais não supervisionados** aplicados ao **W
 
 ---
 
-## 📊 Resultados e Análises
+##  Resultados e Análises
 
 ### 🔹 **1. Análise do Wine Dataset**
 
-#### 📌 **Utilização das 5 dimensões mais correlacionadas**
+#### **Utilização das 5 dimensões mais correlacionadas**
 A matriz de correlação foi utilizada para selecionar as 5 variáveis mais correlacionadas, melhorando a segmentação do modelo.
 
-📌 **Correlação entre as variáveis do Wine Dataset:**  
+ **Correlação entre as variáveis do Wine Dataset:**  
 ![Correlação entre os dados](image-1.png)
 
 #### 🔹 **Clusters e Outliers**
-- O modelo **GNG detectou padrões latentes**, mostrando como os dados se organizam naturalmente.  
+- O modelo **GNG detectou padrões**, mostrando como os dados se organizam naturalmente.  
 - Os clusters apresentaram **uma organização linear**, indicando forte correlação entre algumas variáveis.  
-- Algumas conexões mais longas indicam regiões menos povoadas do espaço latente.  
+- Algumas conexões mais longas indicam regiões menos povoadas do espaço.  
 
 #### 🔹 **Homogeneidade dos Agrupamentos**
 - Os neurônios do GNG se ajustaram a **regiões de maior densidade**, formando agrupamentos coerentes.  
 - **Reduzir as features** para as 5 mais correlacionadas no Wine Dataset **melhorou a segmentação** e destacou um **padrão linear**.  
 
-📌 **Clusters identificados pelo GNG no Wine Dataset:**  
+ **Clusters identificados pelo GNG no Wine Dataset:**  
 ![Cluster formados pelo GNG - Wine](image.png)
 
 ---
 
 ### 🔹 **2. Aplicação no Forest Cover Dataset**
 
-#### 📌 **Redução de dimensionalidade com PCA**
+####  **Redução de dimensionalidade com PCA**
 - O **Forest Cover Dataset** possui **54 features**, o que dificulta a visualização e segmentação direta.  
 - Para contornar esse problema, foi aplicada a técnica **PCA com 15 componentes principais**, preservando **44,18% da variância total**.  
 
-📌 **Gráfico da Variância Explicada pelo PCA:**  
+ **Gráfico da Variância Explicada pelo PCA:**  
 ![Variação explicada](image-3.png)
 
 #### 🔹 **Clusters no Forest Cover Dataset**
-A aplicação do **GNG** no espaço latente gerado pelo **PCA** permitiu uma melhor visualização da segmentação dos dados.
+A aplicação do **GNG** no espaço gerado pelo **PCA** permitiu uma melhor visualização da segmentação dos dados.
 
-📌 **Clusters identificados pelo GNG no Forest Cover Dataset:**  
+ **Clusters identificados pelo GNG no Forest Cover Dataset:**  
 ![Cluster formados pelo GNG - Forest](image-2.png)
 
 #### 🔹 **Principais observações**
-- A projeção no **espaço latente** manteve uma estrutura bem distribuída, destacando **agrupamentos naturais** nos dados.  
+- A projeção no **espaço** manteve uma estrutura bem distribuída, destacando **agrupamentos naturais** nos dados.  
 - O **número de neurônios e conexões** foi ajustado para evitar sobrecarga na rede e aumentar a **separação entre clusters**.  
 
 ---
@@ -96,7 +96,7 @@ Ajustar os hiperparâmetros do **GNG** teve um impacto significativo na segmenta
 
 ## ✅ Conclusão
 
-- O **GNG conseguiu detectar padrões latentes** tanto no **Wine Dataset** quanto no **Forest Cover Dataset**, apesar das diferenças no volume de dados.  
+- O **GNG conseguiu detectar a formação de clusters** tanto no **Wine Dataset** quanto no **Forest Cover Dataset**, apesar das diferenças no volume de dados.  
 - A **redução de dimensionalidade com PCA** foi essencial para trabalhar com o **Forest Cover Dataset**, permitindo uma análise mais clara da segmentação.  
 - A **variação dos parâmetros do GNG** teve um grande impacto na formação dos clusters, ajustando a granularidade da segmentação.  
 - Os **resultados mostram que a escolha de features impacta diretamente** na qualidade da separação dos clusters, sendo um fator essencial na modelagem.  
